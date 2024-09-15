@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.game {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  background-color: rgb(192, 192, 192);
+}
+
+.player {
+  width: 50px;
+  height: 50px;
+  margin-left: 100px;
+  /* background-color: red; */
+  background-image: url("../images/dino4.png");
+  background-size: 100%;
+  background-position: center;
+  transition: .4s;
+}
+
+.jump {
+  margin-bottom: 65px;
+}
+
+.cactus {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  /* background-color: blue; */
+  background-image: url("../images/cactus2.png");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: left 5s linear;
+}
+
+.enemies {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 30px;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.modal_background {
+  background-color: white;
+
+} 
+
+.modal_end {
+  flex-direction: column;
+  gap: 20px;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+button.button {
+  background-color: rgb(27, 148, 247);
+  border: none;
+  outline: none;
+  padding: 12px 24px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 6px;
+  transition: filter 0.2s ease-in-out;
+}
+
+button.button:hover {
+  cursor: pointer;
+  filter: brightness(1.1);
+}
+
+.result {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 20px;
+}
+
+p.result {
+  top: 10px;
+}
+
+.results {
+  flex-shrink: 1;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 12px;
+  border: 10px solid white;
+  flex-grow: 0;
+  width: 300px;
+}
+
+.result__item {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.result__item .date {
+  text-align: left;
+}
