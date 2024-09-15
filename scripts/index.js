@@ -1,6 +1,6 @@
 const config = {
-  minCactusInterval: 1000,
-  maxCactusInterval: 1700,
+  minCactusInterval: 800,
+  maxCactusInterval: 2000,
   flyingBallFreq: 0.2,
 };
 const Player = document.querySelector(".player");
@@ -53,6 +53,9 @@ function createCactus() {
   if (Math.random() < config.flyingBallFreq) {
     cactus.classList.add("cactus_flying");
   }
+  cactus.style.transitionDuration = f() + "s";
+  cactus.style.transitionProperty = "left";
+  cactus.style.transitionTimingFunction = "linear";
   Enemies.appendChild(cactus);
   setTimeout(() => {
     cactus.style.left = cactus.getBoundingClientRect().width * -1 + "px";
@@ -62,6 +65,10 @@ function createCactus() {
     config.maxCactusInterval
   );
   setTimeout(createCactus, mathRandom);
+}
+
+function f() {
+  return 5 - (1.5 / 1000) * result;
 }
 
 function removeCactus(e) {
@@ -91,7 +98,6 @@ function startGame() {
     for (let n = 0; n < Cactuses.length; n++) {
       let coord2 = Cactuses[n].getBoundingClientRect();
       if (checkInter(coord1, coord2)) {
-        console.log("u lose");
         st_finished = true;
         endGame();
       }
@@ -155,7 +161,6 @@ function saveResult() {
     result: result,
   };
   allRates.push(rate);
-  console.log(allRates);
   localStorage.setItem("DinoGameRates", JSON.stringify(allRates));
 }
 
@@ -168,7 +173,6 @@ function showRates() {
   results.sort((a, b) => {
     return b.result - a.result;
   });
-  console.log(results);
   for (let n = 0; n <= results.length; n++) {
     viewResult(n, results[n].date, results[n].result);
   }
