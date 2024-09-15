@@ -35,11 +35,11 @@ body {
   background-image: url("../images/dino4.png");
   background-size: 100%;
   background-position: center;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .jump {
-  margin-bottom: 65px;
+  margin-bottom: 72px;
 }
 
 .cactus {
@@ -76,8 +76,7 @@ body {
 
 .modal_background {
   background-color: white;
-
-} 
+}
 
 .modal_end {
   flex-direction: column;
@@ -135,4 +134,29 @@ p.result {
 
 .result__item .date {
   text-align: left;
+}
+
+@keyframes flying-block {
+  0% {
+    bottom: 40px;
+  }
+  50% {
+    bottom: 160px;
+  }
+  100% {
+    bottom: 40px;
+  }
+}
+
+.cactus_flying {
+  width: 30px;
+  height: 30px;
+  animation-name: flying-block;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  background-image: url("../images/попугай.gif");
+}
+
+.cactus_flying.no-transition {
+  animation: none;
 }

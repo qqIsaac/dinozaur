@@ -1,6 +1,7 @@
 const config = {
   minCactusInterval: 1000,
   maxCactusInterval: 1700,
+  flyingBallFreq: 0.2,
 };
 const Player = document.querySelector(".player");
 const Enemies = document.querySelector(".enemies");
@@ -49,6 +50,9 @@ function createCactus() {
 
   cactus.style.left = Enemies.getBoundingClientRect().width + "px";
   cactus.classList.add("cactus");
+  if (Math.random() < config.flyingBallFreq) {
+    cactus.classList.add("cactus_flying");
+  }
   Enemies.appendChild(cactus);
   setTimeout(() => {
     cactus.style.left = cactus.getBoundingClientRect().width * -1 + "px";
@@ -75,10 +79,6 @@ function onload() {
 
 let game_interval;
 let interval_spawn_cactuses;
-let mathRandom = updateCactusesInterval(
-  config.minCactusInterval,
-  config.maxCactusInterval
-);
 
 function startGame() {
   ModalStart.classList.add("hidden");
